@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="TRPZLabRab.Controls.FormBalanceDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TRPZLabRab.Controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="Black">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock FontSize="14" Foreground="Red" Text="{Binding Path=ErrorMessage, Mode=TwoWay}" />
+        <TextBlock Foreground="LightBlue" Grid.Row="0" FontSize="14" ><Run Text="Input sum for replenish user balance"></Run></TextBlock>
+        <TextBox
+            Foreground="LightBlue"
+            Grid.Row="1"
+            materialDesign:HintAssist.Hint="Sum"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+            Margin="0 6 0 0"
+            FontSize="18"
+            FontFamily="Champagne &amp; Limousines"
+            Text="{Binding Sum, Mode=TwoWay}" />
+        <StackPanel Orientation="Horizontal" Grid.Row="4"
+                    Margin="0 16 0 0">
+            <Button Foreground="LightBlue"
+                    IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
+                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                    FontFamily="Champagne &amp; Limousines"
+                    Content="ACCEPT"
+                    CommandParameter="{Binding}" />
+            <Button Foreground="LightBlue"
+                    IsCancel="True" Margin="8 0 0 0" Style="{DynamicResource MaterialDesignFlatButton}"
+                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                    FontFamily="Champagne &amp; Limousines"
+                    Content="CANCEL">
+                <Button.CommandParameter>
+                    <system:Boolean>False</system:Boolean>
+                </Button.CommandParameter>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,51 @@
+﻿<Application x:Class="TRPZLabRab.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TRPZLabRab"
+             xmlns:identity="clr-namespace:TRPZLabRab.Controls.Identity"
+             xmlns:account="clr-namespace:TRPZLabRab.ViewModels.Identity"
+             xmlns:controls="clr-namespace:TRPZLabRab.Controls"
+             xmlns:banking="clr-namespace:TRPZLabRab.ViewModels.Banking">
+<Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Card.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Popupbox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type account:LoginViewModel}">
+                <identity:LoginControl DataContext="{Binding}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type account:RegisterViewModel}">
+                <identity:RegisterControl DataContext="{Binding}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type banking:BanksViewModel}">
+                <controls:BanksControl DataContext="{Binding}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type banking:ClientInfoViewModel}">
+                <controls:ClientInfoControl DataContext="{Binding}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type banking:UserDepositesViewModel}">
+                <controls:UserDepositesControl DataContext="{Binding}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type banking:UserCreditsViewModel}">
+                <controls:UserCreditsControl DataContext="{Binding}" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
