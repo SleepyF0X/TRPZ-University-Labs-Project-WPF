@@ -17,7 +17,6 @@ namespace DALServicesImpl.Identity
             _options = options;
         }
 
-
         public async Task<Role> FindByName(string roleName)
         {
             await using var context = new AppDbContext(_options);

@@ -21,7 +21,7 @@ namespace DALServicesImpl.Identity
             await using var context = new AppDbContext(_options);
             if (!string.IsNullOrEmpty(userName))
             {
-                var user = await context.Users.Include(u=>u.Accounts).ThenInclude(a=>a.Bank).FirstOrDefaultAsync(
+                var user = await context.Users.Include(u => u.Accounts).ThenInclude(a => a.Bank).FirstOrDefaultAsync(
                     e => e.Email.ToLower().Equals(userName.ToLower()));
                 return user;
             }
@@ -34,7 +34,7 @@ namespace DALServicesImpl.Identity
             await using var context = new AppDbContext(_options);
             if (!userId.Equals(Guid.Empty))
             {
-                var user = await context.Users.Include(u=>u.Accounts).ThenInclude(a=>a.Bank).FirstOrDefaultAsync(e => e.Id.Equals(userId));
+                var user = await context.Users.Include(u => u.Accounts).ThenInclude(a => a.Bank).FirstOrDefaultAsync(e => e.Id.Equals(userId));
                 return user;
             }
 

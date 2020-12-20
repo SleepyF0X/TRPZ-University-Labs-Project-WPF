@@ -22,9 +22,9 @@ namespace DAL.DbModels
         [Required]
         public int Months { get; private set; }
         [Required]
-        public decimal CurrentSum{get; private set; }
+        public decimal CurrentSum{ get; private set; }
         [NotMapped]
-        public decimal MonthPayment => (StartSum + StartSum*PercentagePerMonth/100*Months)/Months;
+        public decimal MonthPayment => (StartSum + (StartSum * PercentagePerMonth / 100 * Months)) / Months;
 
         public Credit(Guid clientId, Guid bankId, DateTimeOffset startDate, decimal startSum, int percentagePerMonth, int months)
         {

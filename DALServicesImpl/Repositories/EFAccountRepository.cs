@@ -36,7 +36,7 @@ namespace DALServicesImpl.Repositories
             await using var context = new AppDbContext(_options);
             if (Exists(id))
             {
-                var client = context.Accounts.Include(a=>a.Bank).FirstOrDefault(a=>a.Id.Equals(id));
+                var client = context.Accounts.Include(a => a.Bank).FirstOrDefault(a => a.Id.Equals(id));
                 return client;
             }
 

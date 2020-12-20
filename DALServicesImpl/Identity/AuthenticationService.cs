@@ -41,14 +41,22 @@ namespace DALServicesImpl.Identity
         {
             if (password != confirmPassword) return RegistrationResult.Fail;
                 var userWithProvidedEmailExists = await _customUserManager.UserExists(email);
-                if (userWithProvidedEmailExists) return RegistrationResult.EmailAlreadyTaken;
-                var user = new User(email, name, surname, age);
+                if (userWithProvidedEmailExists)
+            {
+                return RegistrationResult.EmailAlreadyTaken;
+            }
+
+            var user = new User(email, name, surname, age);
                 var hashedPassword = _passwordHasher.HashPassword(user, password);
                 user.SetPassword(hashedPassword);
                 await _customUserManager.CreateUser(user);
                 var roleExists = await _customRoleManager.RoleExists("Client");
-                if (!roleExists) await _customRoleManager.CreateRole(new Role("Client"));
-                await _customRoleManager.AddToRole(user, "Client");
+                if (!roleExists)
+            {
+                await _customRoleManager.CreateRole(new Role("Client"));
+            }
+
+            await _customRoleManager.AddToRole(user, "Client");
                 return RegistrationResult.Success;
         }
     }

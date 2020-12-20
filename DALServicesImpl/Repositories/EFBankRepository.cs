@@ -38,6 +38,7 @@ namespace DALImpl.Repositories
                 var bank = await context.Banks.FindAsync(id);
                 return bank;
             }
+
             return null;
         }
 
@@ -79,6 +80,7 @@ namespace DALImpl.Repositories
             using var context = new AppDbContext(_options);
             return context.Banks.Any(item => item.Id.Equals(id));
         }
+
         public async Task<bool> HasSameNameAsync(Bank bank)
         {
             await using var context = new AppDbContext(_options);

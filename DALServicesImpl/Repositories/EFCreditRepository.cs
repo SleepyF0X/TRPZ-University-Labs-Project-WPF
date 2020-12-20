@@ -42,13 +42,14 @@ namespace DALServicesImpl.Repositories
                 var credit = await context.Credits.FindAsync(id);
                 return credit;
             }
+
             return null;
         }
 
         public async Task<IReadOnlyCollection<Credit>> GetAll()
         {
             await using var context = new AppDbContext(_options);
-            return context.Credits.Include(d=>d.Client).ThenInclude(c=>c.User).Include(d=>d.Bank).ToList().AsReadOnly();
+            return context.Credits.Include(d => d.Client).ThenInclude(c => c.User).Include(d => d.Bank).ToList().AsReadOnly();
         }
 
         public async Task UpdateOne(Credit item)
@@ -79,6 +80,7 @@ namespace DALServicesImpl.Repositories
             using var context = new AppDbContext(_options);
             return context.Credits.Any(item => item.Id.Equals(id));
         }
+
         public Task Pay(Guid creditId, decimal sum)
         {
             throw new NotImplementedException();

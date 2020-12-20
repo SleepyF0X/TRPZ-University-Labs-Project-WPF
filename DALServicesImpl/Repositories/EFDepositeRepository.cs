@@ -42,13 +42,14 @@ namespace DALServicesImpl.Repositories
                 var deposite = await context.Deposites.FindAsync(id);
                 return deposite;
             }
+
             return null;
         }
 
         public async Task<IReadOnlyCollection<Deposite>> GetAll()
         {
             await using var context = new AppDbContext(_options);
-            return context.Deposites.Include(d=>d.Client).ThenInclude(c=>c.User).Include(d=>d.Bank).ToList().AsReadOnly();
+            return context.Deposites.Include(d => d.Client).ThenInclude(c=>c.User).Include(d=>d.Bank).ToList().AsReadOnly();
         }
 
         public async Task UpdateOne(Deposite item)
